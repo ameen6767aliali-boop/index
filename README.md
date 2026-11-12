@@ -171,6 +171,168 @@ color:#929bb8;
 .grammar-card ul{padding-right:20px;margin:10px 0}
 .grammar-question{margin:15px 0;padding:15px;background:#202b49;border-radius:12px}
 
+/* ================================
+   Responsive Design - جميع الأجهزة
+   يحافظ على ألوان الموقع ومحتواه
+================================ */
+html{
+  width:100%;
+  min-height:100%;
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+  scroll-behavior:smooth;
+}
+
+body{
+  width:100%;
+  min-width:0;
+  overflow-x:hidden;
+  overflow-wrap:anywhere;
+}
+
+img, video, iframe, canvas, svg{
+  max-width:100%;
+}
+
+.container{
+  width:min(100%, 1030px);
+  min-width:0;
+}
+
+nav, .levels, .stats, .grammar-grid{
+  min-width:0;
+}
+
+button, input, select, textarea{
+  max-width:100%;
+  font:inherit;
+}
+
+button{
+  white-space:normal;
+  overflow-wrap:anywhere;
+  touch-action:manipulation;
+  line-height:1.5;
+}
+
+input, select, textarea{
+  min-width:0;
+}
+
+input[type="radio"], input[type="checkbox"]{
+  width:auto;
+  max-width:none;
+  vertical-align:middle;
+}
+
+.card, .grammar-card, .grammar-question, .stat, .level-card{
+  min-width:0;
+  overflow-wrap:anywhere;
+}
+
+.word, [dir="ltr"]{
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+
+/* الجداول والمحتوى العريض لا يخرج عن الشاشة */
+table{
+  display:block;
+  width:100%;
+  max-width:100%;
+  overflow-x:auto;
+  border-collapse:collapse;
+  -webkit-overflow-scrolling:touch;
+}
+
+/* الأجهزة اللوحية والشاشات المتوسطة */
+@media (max-width: 800px){
+  header{padding:28px 14px;}
+  header h1{font-size:clamp(27px, 5vw, 34px);}
+  nav{gap:8px;padding:12px;}
+  nav button{flex:1 1 145px;}
+  .container{width:100%;margin:18px auto;padding:12px;}
+  .levels{grid-template-columns:repeat(auto-fit,minmax(min(145px,100%),1fr));}
+  .grammar-grid{grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));}
+  .card{padding:18px;}
+  .grammar-card{padding:16px;}
+}
+
+/* الهواتف */
+@media (max-width: 560px){
+  body{font-size:15px;}
+  header{padding:22px 12px;}
+  header h1{font-size:27px;margin-bottom:8px;}
+  header p{font-size:14px;line-height:1.7;}
+
+  nav{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px;
+    padding:10px;
+  }
+  nav button{
+    width:100%;
+    min-width:0;
+    padding:11px 7px;
+    font-size:14px;
+  }
+
+  .container{
+    width:100%;
+    margin:12px auto;
+    padding:10px;
+  }
+  h2{font-size:21px;line-height:1.5;margin-bottom:14px;}
+  h3{line-height:1.5;}
+
+  .card{
+    padding:15px;
+    border-radius:12px;
+  }
+  .word{font-size:25px;}
+  .translation{font-size:18px;line-height:1.7;}
+
+  .levels{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:9px;
+  }
+  .level-card{padding:17px 8px;}
+  .level-card h3{font-size:20px;}
+
+  .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;}
+  .stat{min-width:0;padding:14px 8px;font-size:14px;}
+  .stat strong{font-size:21px;}
+
+  button{
+    padding:11px 12px;
+    font-size:14px;
+  }
+  input:not([type="radio"]):not([type="checkbox"]), select, textarea{
+    width:100%;
+    padding:12px;
+    font-size:16px;
+  }
+
+  .grammar-grid{grid-template-columns:minmax(0,1fr);gap:10px;}
+  .grammar-card{padding:14px;}
+  .grammar-question{padding:12px;margin:11px 0;}
+  #quizResult{font-size:19px;padding:14px;}
+  #exam .card button{margin:5px 0;}
+  #pastTensesOptions{flex-direction:column;}
+  #pastTensesOptions button{width:100%;}
+  footer{padding:20px 10px;}
+}
+
+/* الهواتف الصغيرة جداً */
+@media (max-width: 360px){
+  nav{grid-template-columns:minmax(0,1fr);}
+  .levels, .stats{grid-template-columns:minmax(0,1fr);}
+  header h1{font-size:24px;}
+  .container{padding:8px;}
+  .card{padding:12px;}
+}
+
 </style>
 </head>
 
@@ -1781,10 +1943,6 @@ const grammarData=[
 ["I ___ finished my homework.",["has","have","am","did"],1],["She has ___ to London twice.",["be","been","being","was"],1],["They haven't ___ the film yet.",["see","saw","seen","seeing"],2],["___ he ever eaten sushi?",["Have","Has","Does","Is"],1],["We have lived here ___ 2020.",["for","since","ago","during"],1],["I have known her ___ five years.",["since","from","for","at"],2],["Choose the correct sentence.",["He have finished.","He has finished.","He is finish.","He has finish."],1],["Have you ___ your keys?",["find","found","finding","finds"],1],["She has just ___ home.",["arrive","arrived","arriving","arrives"],1],["Present Perfect is commonly used with:",["yesterday","last year","already","in 2010"],2],["She ___ never visited Petra.",["have","has","is","was"],1],["We have already ___ lunch.",["eat","ate","eaten","eating"],2],["Have you finished your work ___?",["yet","yesterday","ago","last"],0],["He has ___ left the house.",["yet","just","tomorrow","ever"],1],["I ___ this movie before.",["have seen","has saw","am see","seeing"],0]]},
 {id:"perfectcontinuous",name:"Present Perfect Continuous",ar:"المضارع التام المستمر",use:"لحدث بدأ في الماضي واستمر مدة وما زال مستمراً أو انتهى للتو، مع التركيز على مدة النشاط أو استمراره.",signals:"for, since, all day, lately, recently, how long",forms:["الإثبات: Subject + have/has + been + verb-ing. I have been studying.","النفي: Subject + have/has + not + been + verb-ing. He hasn't been sleeping.","السؤال: Have/Has + subject + been + verb-ing? Have you been waiting?"],tip:"بعد have/has نضع been ثم الفعل مع ing. for للمدة وsince لنقطة بداية الزمن.",quiz:[
 ["She has been ___ for an hour.",["study","studied","studying","studies"],2],["I ___ been waiting since 8.",["has","have","am","was"],1],["He has been working ___ three hours.",["since","for","at","from"],1],["They have ___ playing all morning.",["be","being","been","was"],2],["___ you been learning English?",["Has","Have","Are","Do"],1],["She ___ been feeling well lately.",["haven't","hasn't","isn't","doesn't"],1],["We have been ___ for the bus.",["wait","waited","waiting","waits"],2],["Use ___ with a starting point in time.",["for","since","during","ago"],1],["Which is correct?",["He has been read.","He have been reading.","He has been reading.","He is been reading."],2],["This tense often emphasizes:",["finished past time","duration of an activity","daily habit only","future prediction"],1],["They have been ___ since morning.",["work","worked","working","works"],2],["How long ___ she been studying?",["have","has","is","does"],1],["It has been raining ___ two hours.",["since","for","from","at"],1],["He has been living here ___ 2022.",["for","since","during","by"],1],["I am tired because I ___ been running.",["has","have","was","am"],1]]},
-{id:"futureContinuous",name:"Future Continuous",ar:"المستقبل المستمر",use:"نستخدمه للتعبير عن حدث سيكون مستمراً في وقت محدد في المستقبل، أو حدث متوقع أن يكون جارياً في تلك اللحظة.",signals:"at this time tomorrow, this time next week, at 8 o’clock tomorrow, at this time next year, all day tomorrow",forms:["الإثبات: Subject + will be + verb-ing. مثال: I will be studying at 8 tomorrow.","النفي: Subject + will not (won't) be + verb-ing. مثال: She won't be sleeping.","السؤال: Will + subject + be + verb-ing? مثال: Will they be travelling tomorrow?"],examples:["This time tomorrow, I will be flying to London. — في مثل هذا الوقت غداً، سأكون مسافراً بالطائرة إلى لندن.","At 9 tonight, she will be studying. — في الساعة التاسعة الليلة، ستكون تدرس.","They won't be working on Friday. — لن يكونوا يعملون يوم الجمعة.","Will you be using the computer later? — هل ستكون تستخدم الحاسوب لاحقاً؟"],tip:"احفظ التركيب: will be + V-ing. لا نضيف s للفعل ولا نستخدم am/is/are؛ الفعل المساعد will ثابت مع جميع الفواعل.",quiz:[
-["At 8 tomorrow, I ___ studying.",["will","will be","am","will have"],1],["This time next week, she ___ travelling.",["will be","is","has been","will"],0],["They ___ be playing at noon.",["won't","don't","aren't","haven't"],0],["___ you be waiting for me?",["Do","Are","Will","Have"],2],["He will be ___ dinner at 7.",["cook","cooks","cooking","cooked"],2],["At this time tomorrow, we ___ flying.",["will be","will","are","have"],0],["Choose the correct sentence.",["She will studying.","She will be studying.","She will is studying.","She be studying."],1],["At 10 tonight, I ___ sleeping.",["will be","will have","am","was"],0],["Which phrase often signals Future Continuous?",["yesterday","at this time tomorrow","last week","two days ago"],1],["___ they be staying at the hotel?",["Are","Do","Will","Have"],2],["We won't be ___ at midnight.",["work","worked","working","works"],2],["The children ___ be taking an exam at 9.",["will","will be","are","have"],1],["Future Continuous describes an action that ___ in the future.",["finished long ago","will be in progress","happens every day","started yesterday"],1],["Tomorrow afternoon, Dad ___ be driving home.",["will","is","will be","has"],2],["Which is the correct negative form?",["will not studying","will not be studying","doesn't be studying","not will studying"],1]]},
-{id:"futurePerfect",name:"Future Perfect",ar:"المستقبل التام",use:"نستخدمه للتعبير عن حدث سيكون قد اكتمل قبل وقت محدد أو قبل حدث آخر في المستقبل.",signals:"by, by the time, by tomorrow, by next week, before, by 2030",forms:["الإثبات: Subject + will have + V3. مثال: She will have finished.","النفي: Subject + will not (won't) have + V3. مثال: They won't have arrived.","السؤال: Will + subject + have + V3? مثال: Will you have completed the task?"],examples:["By 8 o’clock, I will have finished my homework. — بحلول الساعة الثامنة، سأكون قد أنهيت واجبي.","She will have left before we arrive. — ستكون قد غادرت قبل أن نصل.","They won't have completed the project by Friday. — لن يكونوا قد أكملوا المشروع بحلول الجمعة.","Will you have read the book by tomorrow? — هل ستكون قد قرأت الكتاب بحلول الغد؟"],tip:"احفظ التركيب: will have + V3 (التصريف الثالث). نستخدمه عندما يكون التركيز على اكتمال الحدث قبل موعد مستقبلي، وليس على استمراره.",quiz:[
-["By tomorrow, I ___ finished the report.",["will","will have","have","am"],1],["She will have ___ by 6 o'clock.",["leave","leaving","left","leaves"],2],["They ___ have arrived by noon.",["won't","don't","aren't","haven't"],0],["___ you have finished by Friday?",["Do","Have","Will","Are"],2],["He will have ___ his homework.",["do","did","done","doing"],2],["By next year, we ___ have moved house.",["will","will have","are","have"],1],["Choose the correct sentence.",["I will has finished.","I will have finished.","I will have finish.","I will finished."],1],["Future Perfect focuses on an action that ___ before a future time.",["is happening now","will be completed","happened yesterday","happens daily"],1],["Which phrase often signals Future Perfect?",["now","every day","by next Monday","yesterday"],2],["She won't have ___ the email by then.",["send","sent","sending","sends"],1],["By 2030, they ___ built the bridge.",["will have","will be","have","are"],0],["Will he have ___ dinner before we come?",["eat","ate","eaten","eating"],2],["By the time you arrive, the film ___ have started.",["will","has","is","does"],0],["We will have ___ the work by 5.",["complete","completed","completing","completes"],1],["The negative form is:",["will not have + V3","will not be + ing","do not have + V1","will have not + V-ing"],0]]},
 {id:"pastSimple",name:"Past Simple",ar:"الماضي البسيط",use:"نستخدمه للتحدث عن حدث بدأ وانتهى في الماضي، وغالباً نعرف متى حدث.",signals:"yesterday, last night, last week, ago, in 2020, yesterday morning",forms:["الإثبات: Subject + V2. She visited her aunt. (الفعل المنتظم نضيف له غالباً ed، وغير المنتظم له تصريف ثانٍ V2).","النفي: Subject + did not (didn't) + V1. She didn't visit her aunt.","السؤال: Did + subject + V1? Did she visit her aunt?"],examples:["I watched a movie yesterday. — شاهدت فيلماً أمس.","He went to school last Monday. — ذهب إلى المدرسة الاثنين الماضي.","They didn't play football. — لم يلعبوا كرة القدم.","Did you see Ali? — هل رأيت علياً؟"],tip:"مع did وdidn't نستخدم الفعل بالمصدر V1، أما في الإثبات فنستخدم التصريف الثاني V2.",quiz:[
 ["I ___ my grandmother yesterday.",["visit","visited","visiting","visits"],1],
 ["She ___ to the market last week.",["go","goes","went","going"],2],
@@ -1940,12 +2098,10 @@ const grammarData=[
 function renderGrammarTopics(){
  const box=document.getElementById("grammarTopics");
  if(!box) return;
- // اترك بطاقة Verb Patterns الثابتة، واجمع أزمنة الماضي والمضارع تحت كبسة مستقلة لكل مجموعة.
+ // اترك بطاقة Verb Patterns الثابتة، واجمع أزمنة الماضي تحت كبسة واحدة.
  box.querySelectorAll(".generated-grammar-card").forEach(c=>c.remove());
  const pastIds=["pastSimple","pastContinuous","pastPerfect"];
- const presentIds=["simple","continuous","perfect","perfectcontinuous"];
- const futureIds=["futureContinuous","futurePerfect"];
- grammarData.filter(g=>g.id!=="verbPatterns" && !pastIds.includes(g.id) && !presentIds.includes(g.id) && !futureIds.includes(g.id)).forEach(g=>{
+ grammarData.filter(g=>g.id!=="verbPatterns" && !pastIds.includes(g.id)).forEach(g=>{
   const c=document.createElement("div");
   c.className="grammar-card generated-grammar-card";
   c.innerHTML=`<h3>${g.name}</h3><p>${g.ar}</p><br><button type="button" onclick="openGrammar('${g.id}')">شرح القاعدة والامتحان</button>`;
@@ -1964,69 +2120,6 @@ function renderGrammarTopics(){
    <button type="button" onclick="openGrammar('pastPerfect')">Past Perfect - الماضي التام</button>
   </div>`;
  box.appendChild(pastCard);
- const presentCard=document.createElement("div");
- presentCard.className="grammar-card generated-grammar-card present-tenses-card";
- presentCard.innerHTML=`
-  <h3>Present Tenses</h3>
-  <p>أزمنة المضارع: اختر الزمن الذي تريد شرحه والتدرب عليه.</p>
-  <br>
-  <button type="button" onclick="togglePresentTenses()" aria-expanded="false" id="presentTensesToggle">اختيار زمن من أزمنة المضارع</button>
-  <div id="presentTensesOptions" style="display:none;margin-top:14px;gap:9px;flex-wrap:wrap">
-   <button type="button" onclick="openGrammar('continuous')">Present Continuous - المضارع المستمر</button>
-   <button type="button" onclick="openGrammar('simple')">Present Simple - المضارع البسيط</button>
-  </div>`;
- box.appendChild(presentCard);
- const presentPerfectCard=document.createElement("div");
- presentPerfectCard.className="grammar-card generated-grammar-card present-perfect-tenses-card";
- presentPerfectCard.innerHTML=`
-  <h3>Present Perfect Tenses</h3>
-  <p>أزمنة المضارع التام: اختر الزمن الذي تريد شرحه والتدرب عليه.</p>
-  <br>
-  <button type="button" onclick="togglePresentPerfectTenses()" aria-expanded="false" id="presentPerfectTensesToggle">اختيار زمن من أزمنة المضارع التام</button>
-  <div id="presentPerfectTensesOptions" style="display:none;margin-top:14px;gap:9px;flex-wrap:wrap">
-   <button type="button" onclick="openGrammar('perfect')">Present Perfect Simple - المضارع التام البسيط</button>
-   <button type="button" onclick="openGrammar('perfectcontinuous')">Present Perfect Continuous - المضارع التام المستمر</button>
-  </div>`;
- box.appendChild(presentPerfectCard);
- const futureCard=document.createElement("div");
- futureCard.className="grammar-card generated-grammar-card future-tenses-card";
- futureCard.innerHTML=`
-  <h3>Future Tenses</h3>
-  <p>أزمنة المستقبل: اختر الزمن الذي تريد شرحه والتدرب عليه.</p>
-  <br>
-  <button type="button" onclick="toggleFutureTenses()" aria-expanded="false" id="futureTensesToggle">اختيار زمن من أزمنة المستقبل</button>
-  <div id="futureTensesOptions" style="display:none;margin-top:14px;gap:9px;flex-wrap:wrap">
-   <button type="button" onclick="openGrammar('futureContinuous')">Future Continuous - المستقبل المستمر</button>
-   <button type="button" onclick="openGrammar('futurePerfect')">Future Perfect - المستقبل التام</button>
-  </div>`;
- box.appendChild(futureCard);
-}
-function toggleFutureTenses(){
- const options=document.getElementById("futureTensesOptions");
- const toggle=document.getElementById("futureTensesToggle");
- if(!options || !toggle) return;
- const isHidden=options.style.display==="none";
- options.style.display=isHidden?"flex":"none";
- toggle.setAttribute("aria-expanded",String(isHidden));
- toggle.textContent=isHidden?"إخفاء أزمنة المستقبل":"اختيار زمن من أزمنة المستقبل";
-}
-function togglePresentPerfectTenses(){
- const options=document.getElementById("presentPerfectTensesOptions");
- const toggle=document.getElementById("presentPerfectTensesToggle");
- if(!options || !toggle) return;
- const isHidden=options.style.display==="none";
- options.style.display=isHidden?"flex":"none";
- toggle.setAttribute("aria-expanded",String(isHidden));
- toggle.textContent=isHidden?"إخفاء أزمنة المضارع التام":"اختيار زمن من أزمنة المضارع التام";
-}
-function togglePresentTenses(){
- const options=document.getElementById("presentTensesOptions");
- const toggle=document.getElementById("presentTensesToggle");
- if(!options || !toggle) return;
- const isHidden=options.style.display==="none";
- options.style.display=isHidden?"flex":"none";
- toggle.setAttribute("aria-expanded",String(isHidden));
- toggle.textContent=isHidden?"إخفاء أزمنة المضارع":"اختيار زمن من أزمنة المضارع";
 }
 function togglePastTenses(){
  const options=document.getElementById("pastTensesOptions");
@@ -2151,4 +2244,3 @@ updateStats();
 
 </body>
 </html>
-
