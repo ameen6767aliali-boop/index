@@ -13,11 +13,11 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 
-body{
-font-family:Arial,sans-serif;
-background:#090d1c;
-color:white;
-}
+body{font-family:Arial,sans-serif;min-height:100vh;color:#f7f8ff;background-color:#080b1c;background-image:radial-gradient(ellipse at 8% 12%,rgba(139,92,246,.30),transparent 38%),radial-gradient(ellipse at 92% 18%,rgba(14,165,233,.24),transparent 35%),radial-gradient(ellipse at 75% 90%,rgba(236,72,153,.16),transparent 38%),radial-gradient(ellipse at 35% 65%,rgba(45,212,191,.10),transparent 42%),linear-gradient(135deg,#070b1b 0%,#11152d 48%,#090d20 100%);background-attachment:fixed;position:relative;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background-image:linear-gradient(rgba(148,163,184,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.055) 1px,transparent 1px);background-size:46px 46px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 95%)}
+body::after{content:"";position:fixed;width:42vw;height:42vw;min-width:280px;min-height:280px;top:18%;left:-12%;border-radius:50%;pointer-events:none;z-index:-1;background:radial-gradient(circle,rgba(99,102,241,.13),transparent 68%);filter:blur(12px);animation:ambientFloat 16s ease-in-out infinite alternate}
+@keyframes ambientFloat{from{transform:translate3d(0,0,0) scale(.9)}to{transform:translate3d(16vw,12vh,0) scale(1.2)}}
+
 
 header{
 background:linear-gradient(120deg,#5636ff,#008dff);
@@ -171,167 +171,29 @@ color:#929bb8;
 .grammar-card ul{padding-right:20px;margin:10px 0}
 .grammar-question{margin:15px 0;padding:15px;background:#202b49;border-radius:12px}
 
-/* ================================
-   Responsive Design - جميع الأجهزة
-   يحافظ على ألوان الموقع ومحتواه
-================================ */
-html{
-  width:100%;
-  min-height:100%;
-  -webkit-text-size-adjust:100%;
-  text-size-adjust:100%;
-  scroll-behavior:smooth;
-}
-
-body{
-  width:100%;
-  min-width:0;
-  overflow-x:hidden;
-  overflow-wrap:anywhere;
-}
-
-img, video, iframe, canvas, svg{
-  max-width:100%;
-}
-
-.container{
-  width:min(100%, 1030px);
-  min-width:0;
-}
-
-nav, .levels, .stats, .grammar-grid{
-  min-width:0;
-}
-
-button, input, select, textarea{
-  max-width:100%;
-  font:inherit;
-}
-
-button{
-  white-space:normal;
-  overflow-wrap:anywhere;
-  touch-action:manipulation;
-  line-height:1.5;
-}
-
-input, select, textarea{
-  min-width:0;
-}
-
-input[type="radio"], input[type="checkbox"]{
-  width:auto;
-  max-width:none;
-  vertical-align:middle;
-}
-
-.card, .grammar-card, .grammar-question, .stat, .level-card{
-  min-width:0;
-  overflow-wrap:anywhere;
-}
-
-.word, [dir="ltr"]{
-  overflow-wrap:anywhere;
-  word-break:normal;
-}
-
-/* الجداول والمحتوى العريض لا يخرج عن الشاشة */
-table{
-  display:block;
-  width:100%;
-  max-width:100%;
-  overflow-x:auto;
-  border-collapse:collapse;
-  -webkit-overflow-scrolling:touch;
-}
-
-/* الأجهزة اللوحية والشاشات المتوسطة */
-@media (max-width: 800px){
-  header{padding:28px 14px;}
-  header h1{font-size:clamp(27px, 5vw, 34px);}
-  nav{gap:8px;padding:12px;}
-  nav button{flex:1 1 145px;}
-  .container{width:100%;margin:18px auto;padding:12px;}
-  .levels{grid-template-columns:repeat(auto-fit,minmax(min(145px,100%),1fr));}
-  .grammar-grid{grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));}
-  .card{padding:18px;}
-  .grammar-card{padding:16px;}
-}
-
-/* الهواتف */
-@media (max-width: 560px){
-  body{font-size:15px;}
-  header{padding:22px 12px;}
-  header h1{font-size:27px;margin-bottom:8px;}
-  header p{font-size:14px;line-height:1.7;}
-
-  nav{
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:8px;
-    padding:10px;
-  }
-  nav button{
-    width:100%;
-    min-width:0;
-    padding:11px 7px;
-    font-size:14px;
-  }
-
-  .container{
-    width:100%;
-    margin:12px auto;
-    padding:10px;
-  }
-  h2{font-size:21px;line-height:1.5;margin-bottom:14px;}
-  h3{line-height:1.5;}
-
-  .card{
-    padding:15px;
-    border-radius:12px;
-  }
-  .word{font-size:25px;}
-  .translation{font-size:18px;line-height:1.7;}
-
-  .levels{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:9px;
-  }
-  .level-card{padding:17px 8px;}
-  .level-card h3{font-size:20px;}
-
-  .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;}
-  .stat{min-width:0;padding:14px 8px;font-size:14px;}
-  .stat strong{font-size:21px;}
-
-  button{
-    padding:11px 12px;
-    font-size:14px;
-  }
-  input:not([type="radio"]):not([type="checkbox"]), select, textarea{
-    width:100%;
-    padding:12px;
-    font-size:16px;
-  }
-
-  .grammar-grid{grid-template-columns:minmax(0,1fr);gap:10px;}
-  .grammar-card{padding:14px;}
-  .grammar-question{padding:12px;margin:11px 0;}
-  #quizResult{font-size:19px;padding:14px;}
-  #exam .card button{margin:5px 0;}
-  #pastTensesOptions{flex-direction:column;}
-  #pastTensesOptions button{width:100%;}
-  footer{padding:20px 10px;}
-}
-
-/* الهواتف الصغيرة جداً */
-@media (max-width: 360px){
-  nav{grid-template-columns:minmax(0,1fr);}
-  .levels, .stats{grid-template-columns:minmax(0,1fr);}
-  header h1{font-size:24px;}
-  .container{padding:8px;}
-  .card{padding:12px;}
-}
+header{position:relative;overflow:hidden;background:linear-gradient(115deg,rgba(79,70,229,.96),rgba(14,165,233,.92) 55%,rgba(168,85,247,.92));border-bottom:1px solid rgba(255,255,255,.18);box-shadow:0 16px 50px rgba(14,165,233,.16)}
+header:before,header:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.16);border-radius:50%;pointer-events:none}header:before{width:260px;height:260px;top:-175px;right:8%}header:after{width:190px;height:190px;bottom:-145px;left:12%}
+header h1{position:relative;text-shadow:0 4px 22px rgba(0,0,0,.24)}header p{position:relative;color:rgba(255,255,255,.9)}
+nav{position:sticky;top:0;z-index:20;background:rgba(10,16,37,.82);border-bottom:1px solid rgba(148,163,184,.18);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 8px 30px rgba(0,0,0,.2)}
+button{position:relative;overflow:hidden;background:linear-gradient(135deg,#6366f1,#8b5cf6 52%,#0ea5e9);color:#fff;font-weight:700;border:1px solid rgba(255,255,255,.16);box-shadow:0 7px 18px rgba(79,70,229,.22);transition:transform .22s ease,box-shadow .22s ease,filter .22s ease}
+button:after{content:"";position:absolute;inset:0;left:-120%;background:linear-gradient(110deg,transparent,rgba(255,255,255,.2),transparent);transition:left .55s ease;pointer-events:none}
+button:hover{opacity:1;transform:translateY(-3px);filter:saturate(1.18);box-shadow:0 12px 26px rgba(99,102,241,.32)}button:hover:after{left:120%}button:active{transform:translateY(-1px) scale(.98)}button:focus-visible{outline:3px solid #67e8f9;outline-offset:3px}
+.container{position:relative;z-index:1}
+.card,.grammar-card,.stat,.level-card{background:linear-gradient(145deg,rgba(25,35,67,.88),rgba(14,22,47,.88));border:1px solid rgba(148,163,184,.22);box-shadow:0 14px 36px rgba(0,0,0,.18),inset 0 1px rgba(255,255,255,.035);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.card{transition:border-color .25s ease,box-shadow .25s ease}.card:hover{border-color:rgba(129,140,248,.42);box-shadow:0 18px 42px rgba(0,0,0,.24)}
+.level-card{transition:transform .22s ease,border-color .22s ease,background .22s ease}.level-card:hover{transform:translateY(-5px);border-color:#818cf8;background:linear-gradient(145deg,rgba(49,46,129,.65),rgba(14,116,144,.35))}
+h2{color:#7dd3fc;text-shadow:0 0 22px rgba(56,189,248,.14)}
+input{background:rgba(15,23,42,.82);border-color:rgba(129,140,248,.35)}input:focus{outline:none;border-color:#67e8f9;box-shadow:0 0 0 3px rgba(103,232,249,.13)}
+.option{background:linear-gradient(120deg,#263653,#29365a);border:1px solid rgba(148,163,184,.14)}.option.correct{background:linear-gradient(120deg,#047857,#16a34a)}.option.wrong{background:linear-gradient(120deg,#be123c,#e11d48)}
+#celebrationLayer{position:fixed;inset:0;z-index:9999;pointer-events:none;overflow:hidden}
+.celebration-banner{position:fixed;z-index:10000;top:18px;left:50%;transform:translateX(-50%);padding:14px 24px;border-radius:18px;text-align:center;direction:rtl;color:white;font-size:clamp(18px,3vw,26px);font-weight:800;background:linear-gradient(120deg,rgba(79,70,229,.96),rgba(219,39,119,.96),rgba(8,145,178,.96));border:1px solid rgba(255,255,255,.35);box-shadow:0 16px 45px rgba(0,0,0,.35);animation:celebratePop .55s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes celebratePop{from{opacity:0;transform:translate(-50%,-25px) scale(.65)}to{opacity:1;transform:translate(-50%,0) scale(1)}}
+.confetti-piece{position:absolute;top:-24px;opacity:.95;animation:confettiFall var(--fall-time,3.4s) linear forwards}
+@keyframes confettiFall{to{transform:translate3d(var(--drift,0px),110vh,0) rotate(var(--spin-end,900deg));opacity:.1}}
+.celebration-spark{position:absolute;width:7px;height:7px;border-radius:50%;background:#fff;box-shadow:0 0 16px 5px rgba(255,255,255,.7);animation:sparkle 1s ease-out forwards}
+@keyframes sparkle{from{opacity:1;transform:scale(.2)}to{opacity:0;transform:scale(3)}}
+@media(max-width:600px){header{padding:28px 12px}header h1{font-size:29px}nav{gap:7px;padding:10px}nav button{padding:10px 12px;font-size:13px}.card{padding:17px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 
 </style>
 </head>
@@ -425,6 +287,11 @@ oninput="searchWords()">
 <h2>📝 امتحان اللغة الإنجليزية</h2>
 
 <div id="examStart">
+<div class="card" style="border:2px solid #64caff">
+<h3>🎯 اختبار تحديد مستوى اللغة الإنجليزية</h3>
+<p style="line-height:2;margin:10px 0">امتحان شامل من A1 إلى C2، يحتوي على 90 سؤال معاني: 15 سؤالاً لكل مستوى. إذا أخطأت في 5 أسئلة متتالية ضمن المستوى نفسه، يتوقف الاختبار ويُحدد مستواك عند هذا المستوى.</p>
+<button type="button" onclick="startLevelAssessment()">ابدأ اختبار تحديد المستوى</button>
+</div>
 <div class="card">
 <p>اختر نوع الامتحان:</p><br>
 <div class="levels">
@@ -451,8 +318,10 @@ oninput="searchWords()">
 </div>
 
 <div id="quizResult"></div>
+<div id="levelAssessment" style="display:none"></div>
 
 </section>
+
 
 <section id="favorites" class="page">
 
@@ -482,7 +351,6 @@ English Master © 2026
 </footer>
 
 <script>
-
 // ===================================
 // قاعدة الكلمات
 // ===================================
@@ -1896,6 +1764,7 @@ percent>=50?
 document.getElementById("examStart").style.display="block";
 
 updateStats();
+if(percent===100)celebratePerfectScore("علامة كاملة في الامتحان!");
 
 }
 
@@ -1943,6 +1812,10 @@ const grammarData=[
 ["I ___ finished my homework.",["has","have","am","did"],1],["She has ___ to London twice.",["be","been","being","was"],1],["They haven't ___ the film yet.",["see","saw","seen","seeing"],2],["___ he ever eaten sushi?",["Have","Has","Does","Is"],1],["We have lived here ___ 2020.",["for","since","ago","during"],1],["I have known her ___ five years.",["since","from","for","at"],2],["Choose the correct sentence.",["He have finished.","He has finished.","He is finish.","He has finish."],1],["Have you ___ your keys?",["find","found","finding","finds"],1],["She has just ___ home.",["arrive","arrived","arriving","arrives"],1],["Present Perfect is commonly used with:",["yesterday","last year","already","in 2010"],2],["She ___ never visited Petra.",["have","has","is","was"],1],["We have already ___ lunch.",["eat","ate","eaten","eating"],2],["Have you finished your work ___?",["yet","yesterday","ago","last"],0],["He has ___ left the house.",["yet","just","tomorrow","ever"],1],["I ___ this movie before.",["have seen","has saw","am see","seeing"],0]]},
 {id:"perfectcontinuous",name:"Present Perfect Continuous",ar:"المضارع التام المستمر",use:"لحدث بدأ في الماضي واستمر مدة وما زال مستمراً أو انتهى للتو، مع التركيز على مدة النشاط أو استمراره.",signals:"for, since, all day, lately, recently, how long",forms:["الإثبات: Subject + have/has + been + verb-ing. I have been studying.","النفي: Subject + have/has + not + been + verb-ing. He hasn't been sleeping.","السؤال: Have/Has + subject + been + verb-ing? Have you been waiting?"],tip:"بعد have/has نضع been ثم الفعل مع ing. for للمدة وsince لنقطة بداية الزمن.",quiz:[
 ["She has been ___ for an hour.",["study","studied","studying","studies"],2],["I ___ been waiting since 8.",["has","have","am","was"],1],["He has been working ___ three hours.",["since","for","at","from"],1],["They have ___ playing all morning.",["be","being","been","was"],2],["___ you been learning English?",["Has","Have","Are","Do"],1],["She ___ been feeling well lately.",["haven't","hasn't","isn't","doesn't"],1],["We have been ___ for the bus.",["wait","waited","waiting","waits"],2],["Use ___ with a starting point in time.",["for","since","during","ago"],1],["Which is correct?",["He has been read.","He have been reading.","He has been reading.","He is been reading."],2],["This tense often emphasizes:",["finished past time","duration of an activity","daily habit only","future prediction"],1],["They have been ___ since morning.",["work","worked","working","works"],2],["How long ___ she been studying?",["have","has","is","does"],1],["It has been raining ___ two hours.",["since","for","from","at"],1],["He has been living here ___ 2022.",["for","since","during","by"],1],["I am tired because I ___ been running.",["has","have","was","am"],1]]},
+{id:"futureContinuous",name:"Future Continuous",ar:"المستقبل المستمر",use:"نستخدمه للتعبير عن حدث سيكون مستمراً في وقت محدد في المستقبل، أو حدث متوقع أن يكون جارياً في تلك اللحظة.",signals:"at this time tomorrow, this time next week, at 8 o’clock tomorrow, at this time next year, all day tomorrow",forms:["الإثبات: Subject + will be + verb-ing. مثال: I will be studying at 8 tomorrow.","النفي: Subject + will not (won't) be + verb-ing. مثال: She won't be sleeping.","السؤال: Will + subject + be + verb-ing? مثال: Will they be travelling tomorrow?"],examples:["This time tomorrow, I will be flying to London. — في مثل هذا الوقت غداً، سأكون مسافراً بالطائرة إلى لندن.","At 9 tonight, she will be studying. — في الساعة التاسعة الليلة، ستكون تدرس.","They won't be working on Friday. — لن يكونوا يعملون يوم الجمعة.","Will you be using the computer later? — هل ستكون تستخدم الحاسوب لاحقاً؟"],tip:"احفظ التركيب: will be + V-ing. لا نضيف s للفعل ولا نستخدم am/is/are؛ الفعل المساعد will ثابت مع جميع الفواعل.",quiz:[
+["At 8 tomorrow, I ___ studying.",["will","will be","am","will have"],1],["This time next week, she ___ travelling.",["will be","is","has been","will"],0],["They ___ be playing at noon.",["won't","don't","aren't","haven't"],0],["___ you be waiting for me?",["Do","Are","Will","Have"],2],["He will be ___ dinner at 7.",["cook","cooks","cooking","cooked"],2],["At this time tomorrow, we ___ flying.",["will be","will","are","have"],0],["Choose the correct sentence.",["She will studying.","She will be studying.","She will is studying.","She be studying."],1],["At 10 tonight, I ___ sleeping.",["will be","will have","am","was"],0],["Which phrase often signals Future Continuous?",["yesterday","at this time tomorrow","last week","two days ago"],1],["___ they be staying at the hotel?",["Are","Do","Will","Have"],2],["We won't be ___ at midnight.",["work","worked","working","works"],2],["The children ___ be taking an exam at 9.",["will","will be","are","have"],1],["Future Continuous describes an action that ___ in the future.",["finished long ago","will be in progress","happens every day","started yesterday"],1],["Tomorrow afternoon, Dad ___ be driving home.",["will","is","will be","has"],2],["Which is the correct negative form?",["will not studying","will not be studying","doesn't be studying","not will studying"],1]]},
+{id:"futurePerfect",name:"Future Perfect",ar:"المستقبل التام",use:"نستخدمه للتعبير عن حدث سيكون قد اكتمل قبل وقت محدد أو قبل حدث آخر في المستقبل.",signals:"by, by the time, by tomorrow, by next week, before, by 2030",forms:["الإثبات: Subject + will have + V3. مثال: She will have finished.","النفي: Subject + will not (won't) have + V3. مثال: They won't have arrived.","السؤال: Will + subject + have + V3? مثال: Will you have completed the task?"],examples:["By 8 o’clock, I will have finished my homework. — بحلول الساعة الثامنة، سأكون قد أنهيت واجبي.","She will have left before we arrive. — ستكون قد غادرت قبل أن نصل.","They won't have completed the project by Friday. — لن يكونوا قد أكملوا المشروع بحلول الجمعة.","Will you have read the book by tomorrow? — هل ستكون قد قرأت الكتاب بحلول الغد؟"],tip:"احفظ التركيب: will have + V3 (التصريف الثالث). نستخدمه عندما يكون التركيز على اكتمال الحدث قبل موعد مستقبلي، وليس على استمراره.",quiz:[
+["By tomorrow, I ___ finished the report.",["will","will have","have","am"],1],["She will have ___ by 6 o'clock.",["leave","leaving","left","leaves"],2],["They ___ have arrived by noon.",["won't","don't","aren't","haven't"],0],["___ you have finished by Friday?",["Do","Have","Will","Are"],2],["He will have ___ his homework.",["do","did","done","doing"],2],["By next year, we ___ have moved house.",["will","will have","are","have"],1],["Choose the correct sentence.",["I will has finished.","I will have finished.","I will have finish.","I will finished."],1],["Future Perfect focuses on an action that ___ before a future time.",["is happening now","will be completed","happened yesterday","happens daily"],1],["Which phrase often signals Future Perfect?",["now","every day","by next Monday","yesterday"],2],["She won't have ___ the email by then.",["send","sent","sending","sends"],1],["By 2030, they ___ built the bridge.",["will have","will be","have","are"],0],["Will he have ___ dinner before we come?",["eat","ate","eaten","eating"],2],["By the time you arrive, the film ___ have started.",["will","has","is","does"],0],["We will have ___ the work by 5.",["complete","completed","completing","completes"],1],["The negative form is:",["will not have + V3","will not be + ing","do not have + V1","will have not + V-ing"],0]]},
 {id:"pastSimple",name:"Past Simple",ar:"الماضي البسيط",use:"نستخدمه للتحدث عن حدث بدأ وانتهى في الماضي، وغالباً نعرف متى حدث.",signals:"yesterday, last night, last week, ago, in 2020, yesterday morning",forms:["الإثبات: Subject + V2. She visited her aunt. (الفعل المنتظم نضيف له غالباً ed، وغير المنتظم له تصريف ثانٍ V2).","النفي: Subject + did not (didn't) + V1. She didn't visit her aunt.","السؤال: Did + subject + V1? Did she visit her aunt?"],examples:["I watched a movie yesterday. — شاهدت فيلماً أمس.","He went to school last Monday. — ذهب إلى المدرسة الاثنين الماضي.","They didn't play football. — لم يلعبوا كرة القدم.","Did you see Ali? — هل رأيت علياً؟"],tip:"مع did وdidn't نستخدم الفعل بالمصدر V1، أما في الإثبات فنستخدم التصريف الثاني V2.",quiz:[
 ["I ___ my grandmother yesterday.",["visit","visited","visiting","visits"],1],
 ["She ___ to the market last week.",["go","goes","went","going"],2],
@@ -2098,10 +1971,12 @@ const grammarData=[
 function renderGrammarTopics(){
  const box=document.getElementById("grammarTopics");
  if(!box) return;
- // اترك بطاقة Verb Patterns الثابتة، واجمع أزمنة الماضي تحت كبسة واحدة.
+ // اترك بطاقة Verb Patterns الثابتة، واجمع أزمنة الماضي والمضارع تحت كبسة مستقلة لكل مجموعة.
  box.querySelectorAll(".generated-grammar-card").forEach(c=>c.remove());
  const pastIds=["pastSimple","pastContinuous","pastPerfect"];
- grammarData.filter(g=>g.id!=="verbPatterns" && !pastIds.includes(g.id)).forEach(g=>{
+ const presentIds=["simple","continuous","perfect","perfectcontinuous"];
+ const futureIds=["futureContinuous","futurePerfect"];
+ grammarData.filter(g=>g.id!=="verbPatterns" && !pastIds.includes(g.id) && !presentIds.includes(g.id) && !futureIds.includes(g.id)).forEach(g=>{
   const c=document.createElement("div");
   c.className="grammar-card generated-grammar-card";
   c.innerHTML=`<h3>${g.name}</h3><p>${g.ar}</p><br><button type="button" onclick="openGrammar('${g.id}')">شرح القاعدة والامتحان</button>`;
@@ -2120,6 +1995,77 @@ function renderGrammarTopics(){
    <button type="button" onclick="openGrammar('pastPerfect')">Past Perfect - الماضي التام</button>
   </div>`;
  box.appendChild(pastCard);
+ const presentCard=document.createElement("div");
+ presentCard.className="grammar-card generated-grammar-card present-tenses-card";
+ presentCard.innerHTML=`
+  <h3>Present Tenses</h3>
+  <p>أزمنة المضارع: اختر الزمن الذي تريد شرحه والتدرب عليه.</p>
+  <br>
+  <button type="button" onclick="togglePresentTenses()" aria-expanded="false" id="presentTensesToggle">اختيار زمن من أزمنة المضارع</button>
+  <div id="presentTensesOptions" style="display:none;margin-top:14px;gap:9px;flex-wrap:wrap">
+   <button type="button" onclick="openGrammar('continuous')">Present Continuous - المضارع المستمر</button>
+   <button type="button" onclick="openGrammar('simple')">Present Simple - المضارع البسيط</button>
+  </div>`;
+ box.appendChild(presentCard);
+ const presentPerfectCard=document.createElement("div");
+ presentPerfectCard.className="grammar-card generated-grammar-card present-perfect-tenses-card";
+ presentPerfectCard.innerHTML=`
+  <h3>Present Perfect Tenses</h3>
+  <p>أزمنة المضارع التام: اختر الزمن الذي تريد شرحه والتدرب عليه.</p>
+  <br>
+  <button type="button" onclick="togglePresentPerfectTenses()" aria-expanded="false" id="presentPerfectTensesToggle">اختيار زمن من أزمنة المضارع التام</button>
+  <div id="presentPerfectTensesOptions" style="display:none;margin-top:14px;gap:9px;flex-wrap:wrap">
+   <button type="button" onclick="openGrammar('perfect')">Present Perfect Simple - المضارع التام البسيط</button>
+   <button type="button" onclick="openGrammar('perfectcontinuous')">Present Perfect Continuous - المضارع التام المستمر</button>
+  </div>`;
+ box.appendChild(presentPerfectCard);
+ const futureCard=document.createElement("div");
+ futureCard.className="grammar-card generated-grammar-card future-tenses-card";
+ futureCard.innerHTML=`
+  <h3>Future Tenses</h3>
+  <p>أزمنة المستقبل: اختر الزمن الذي تريد شرحه والتدرب عليه.</p>
+  <br>
+  <button type="button" onclick="toggleFutureTenses()" aria-expanded="false" id="futureTensesToggle">اختيار زمن من أزمنة المستقبل</button>
+  <div id="futureTensesOptions" style="display:none;margin-top:14px;gap:9px;flex-wrap:wrap">
+   <button type="button" onclick="openGrammar('futureContinuous')">Future Continuous - المستقبل المستمر</button>
+   <button type="button" onclick="openGrammar('futurePerfect')">Future Perfect - المستقبل التام</button>
+  </div>`;
+ box.appendChild(futureCard);
+ const mixedCard=document.createElement("div");
+ mixedCard.className="grammar-card generated-grammar-card mixed-grammar-card";
+ mixedCard.innerHTML=`
+  <h3>🎯 Mixed Grammar Challenge - امتحان القواعد المختلط</h3>
+  <p>امتحان جديد يجمع أسئلة من قواعد مختلفة بترتيب عشوائي، مع تصحيح ومراجعة لكل إجابة.</p>
+  <br>
+  <button type="button" onclick="startMixedGrammarExam()">ابدأ التحدي المختلط</button>`;
+ box.appendChild(mixedCard);
+}
+function toggleFutureTenses(){
+ const options=document.getElementById("futureTensesOptions");
+ const toggle=document.getElementById("futureTensesToggle");
+ if(!options || !toggle) return;
+ const isHidden=options.style.display==="none";
+ options.style.display=isHidden?"flex":"none";
+ toggle.setAttribute("aria-expanded",String(isHidden));
+ toggle.textContent=isHidden?"إخفاء أزمنة المستقبل":"اختيار زمن من أزمنة المستقبل";
+}
+function togglePresentPerfectTenses(){
+ const options=document.getElementById("presentPerfectTensesOptions");
+ const toggle=document.getElementById("presentPerfectTensesToggle");
+ if(!options || !toggle) return;
+ const isHidden=options.style.display==="none";
+ options.style.display=isHidden?"flex":"none";
+ toggle.setAttribute("aria-expanded",String(isHidden));
+ toggle.textContent=isHidden?"إخفاء أزمنة المضارع التام":"اختيار زمن من أزمنة المضارع التام";
+}
+function togglePresentTenses(){
+ const options=document.getElementById("presentTensesOptions");
+ const toggle=document.getElementById("presentTensesToggle");
+ if(!options || !toggle) return;
+ const isHidden=options.style.display==="none";
+ options.style.display=isHidden?"flex":"none";
+ toggle.setAttribute("aria-expanded",String(isHidden));
+ toggle.textContent=isHidden?"إخفاء أزمنة المضارع":"اختيار زمن من أزمنة المضارع";
 }
 function togglePastTenses(){
  const options=document.getElementById("pastTensesOptions");
@@ -2199,6 +2145,214 @@ function gradeVerbPatternSection(sectionId){
  r.innerHTML=`نتيجتك: <strong style="color:#64caff">${score}/${s.quiz.length} (${Math.round(score/s.quiz.length*100)}%)</strong><br>${score===s.quiz.length?"ممتاز!":score>=6?"أحسنت! راجع الأخطاء.":"راجع الشرح وحاول مرة ثانية."}<div class="card" style="margin-top:15px;text-align:right"><h3>مراجعة الإجابات</h3>${review.map((m,i)=>`<div class="grammar-question"><strong>${i+1}. ${m.question}</strong><p>إجابتك: <span style="color:${m.correct?'#75e6a5':'#ff9aa8'}">${m.answer}</span></p><p>الإجابة الصحيحة: <strong style="color:#75e6a5">${m.correctAnswer}</strong></p>${m.correct?'✅ صحيح':'❌ غير صحيح'}</div>`).join("")}</div>`;
 }
 
+// ===================================
+// اختبار تحديد مستوى اللغة الإنجليزية (A1 إلى C2)
+// 15 سؤال معاني لكل مستوى = 90 سؤالاً
+// خمس إجابات خاطئة متتالية في المستوى نفسه توقف الاختبار
+// ===================================
+let assessmentLevels = ["A1","A2","B1","B2","C1","C2"];
+let assessmentQuestions = [];
+let assessmentLevelIndex = 0;
+let assessmentQuestionIndex = 0;
+let assessmentTotalScore = 0;
+let assessmentLevelScore = 0;
+let assessmentWrongStreak = 0;
+let assessmentFinished = false;
+let assessmentHistory = [];
+
+function startLevelAssessment(){
+ const panel=document.getElementById("levelAssessment");
+ document.getElementById("examStart").style.display="none";
+ document.getElementById("quiz").style.display="none";
+ document.getElementById("quizResult").innerHTML="";
+ panel.style.display="block";
+ assessmentLevelIndex=0;
+ assessmentQuestionIndex=0;
+ assessmentTotalScore=0;
+ assessmentLevelScore=0;
+ assessmentWrongStreak=0;
+ assessmentFinished=false;
+ assessmentHistory=[];
+ assessmentQuestions=[];
+ // اختيار 15 كلمة من كلمات كل مستوى، مع خلط ترتيب الأسئلة والاختيارات.
+ for(const level of assessmentLevels){
+  const bank=words.filter(x=>x.l===level && x.w && x.t);
+  if(bank.length<15){
+   panel.innerHTML=`<div class="card">عذراً، لا توجد 15 كلمة كافية في المستوى ${level} لإكمال اختبار تحديد المستوى.</div>`;
+   return;
+  }
+  const chosen=shuffleArray(bank.slice()).slice(0,15);
+  assessmentQuestions.push(chosen.map(item=>{
+   const distractors=shuffleArray(words.filter(x=>x.t!==item.t && x.w.toLowerCase()!==item.w.toLowerCase()))
+    .slice(0,3).map(x=>x.t);
+   const options=shuffleArray([item.t,...distractors]);
+   return {level:level,word:item.w,translation:item.t,options:options,answer:options.indexOf(item.t)};
+  }));
+  if(score===s.quiz.length)celebratePerfectScore("علامة كاملة في امتحان القواعد!");
+ }
+ renderAssessmentQuestion();
+}
+
+function renderAssessmentQuestion(){
+ const panel=document.getElementById("levelAssessment");
+ const level=assessmentLevels[assessmentLevelIndex];
+ const item=assessmentQuestions[assessmentLevelIndex][assessmentQuestionIndex];
+ const totalDone=assessmentLevels.slice(0,assessmentLevelIndex).length*15+assessmentQuestionIndex+1;
+ panel.innerHTML=`<div class="card">
+  <h2>🎯 اختبار تحديد مستوى اللغة الإنجليزية</h2>
+  <p style="line-height:2">المستوى الحالي: <strong style="color:#64caff">${level}</strong> — ${levelNames[level]}</p>
+  <p>السؤال ${assessmentQuestionIndex+1} من 15 في هذا المستوى | السؤال ${totalDone} من 90</p>
+  <div style="height:10px;background:#303a59;border-radius:10px;margin:14px 0;overflow:hidden"><div style="height:100%;width:${(totalDone/90)*100}%;background:#64caff"></div></div>
+  <p>الإجابات الصحيحة في هذا المستوى: ${assessmentLevelScore}/15</p>
+  <p>الأخطاء المتتالية: ${assessmentWrongStreak}/5</p>
+  <hr style="border-color:#3c4770;margin:18px 0">
+  <h3 dir="ltr" style="font-size:32px;margin:20px 0">${item.word}</h3>
+  <p>ما معنى الكلمة باللغة العربية؟</p>
+  <div id="assessmentOptions" class="levels" style="margin-top:18px"></div>
+  <p id="assessmentFeedback" style="margin-top:15px;line-height:2"></p>
+  <button id="assessmentNext" type="button" style="display:none" onclick="nextAssessmentQuestion()">السؤال التالي</button>
+  <button type="button" onclick="cancelLevelAssessment()" style="background:#555;margin-right:8px">إنهاء الاختبار</button>
+ </div>`;
+ const options=document.getElementById("assessmentOptions");
+ item.options.forEach((option,index)=>{
+  const btn=document.createElement("button");
+  btn.type="button";btn.className="option";btn.textContent=option;
+  btn.style.display="block";btn.style.width="100%";btn.style.margin="8px 0";
+  btn.onclick=()=>answerAssessment(index,btn);
+  options.appendChild(btn);
+ });
+ panel.scrollIntoView({behavior:"smooth",block:"start"});
+  if(reason==="complete" && assessmentTotalScore===90)celebratePerfectScore("90 من 90! مستوى أسطوري!");
+}
+
+function answerAssessment(choice,button){
+ if(assessmentFinished)return;
+ const item=assessmentQuestions[assessmentLevelIndex][assessmentQuestionIndex];
+ const buttons=document.querySelectorAll("#assessmentOptions button");
+ buttons.forEach(b=>b.disabled=true);
+ const feedback=document.getElementById("assessmentFeedback");
+ if(choice===item.answer){
+  assessmentTotalScore++;assessmentLevelScore++;assessmentWrongStreak=0;
+  button.style.background="#16834b";
+  feedback.innerHTML="✅ إجابة صحيحة!";
+ }else{
+  assessmentWrongStreak++;
+  button.style.background="#a83245";
+  buttons[item.answer].style.background="#16834b";
+  feedback.innerHTML=`❌ الإجابة الصحيحة: <strong>${item.translation}</strong><br>باقي ${Math.max(0,5-assessmentWrongStreak)} أخطاء متتالية حتى يتوقف الاختبار في هذا المستوى.`;
+ }
+ assessmentHistory.push({level:item.level,word:item.word,correct:choice===item.answer,answer:item.translation});
+ const next=document.getElementById("assessmentNext");
+ next.style.display="inline-block";
+ next.textContent=(assessmentWrongStreak>=5 || (assessmentQuestionIndex===14 && assessmentLevelIndex===5))?"عرض النتيجة":"السؤال التالي";
+}
+
+function nextAssessmentQuestion(){
+ if(assessmentWrongStreak>=5){finishLevelAssessment(assessmentLevels[assessmentLevelIndex],"streak");return;}
+ if(assessmentQuestionIndex<14){
+  assessmentQuestionIndex++;
+  renderAssessmentQuestion();
+  return;
+ }
+ // انتهت أسئلة المستوى الحالي دون الوصول إلى خمسة أخطاء متتالية.
+ if(assessmentLevelIndex<5){
+  assessmentLevelIndex++;
+  assessmentQuestionIndex=0;
+  assessmentLevelScore=0;
+  assessmentWrongStreak=0;
+  renderAssessmentQuestion();
+ }else{
+  finishLevelAssessment("C2","complete");
+ }
+}
+
+function finishLevelAssessment(level,reason){
+ assessmentFinished=true;
+ const panel=document.getElementById("levelAssessment");
+ const completed=assessmentHistory.length;
+ const title=reason==="complete"?"ممتاز! أكملت جميع المستويات":"توقف الاختبار بعد خمسة أخطاء متتالية";
+ const description=reason==="complete"?
+  "أجبت عن جميع الأسئلة التسعين، وهذا يشير إلى أنك وصلت إلى مستوى C2 في هذا الاختبار.":
+  `وصلت إلى خمسة أخطاء متتالية في مستوى ${level}، لذلك تم تحديد مستواك في هذا الاختبار عند ${level} (${levelNames[level]}).`;
+ panel.innerHTML=`<div class="card" style="text-align:center">
+  <h2>🏆 نتيجة اختبار تحديد المستوى</h2>
+  <h3 style="color:#64caff;margin:18px 0">${title}</h3>
+  <div style="font-size:54px;margin:15px 0">${level}</div>
+  <h3>${levelNames[level]}</h3>
+  <p style="line-height:2;margin:15px 0">${description}</p>
+  <p>إجابات صحيحة: ${assessmentTotalScore} من ${completed}</p>
+  <p>نسبة الإجابات الصحيحة: ${completed?Math.round(assessmentTotalScore/completed*100):0}%</p>
+  <p>عدد الأسئلة التي أجبت عنها: ${completed}</p>
+  <button type="button" onclick="startLevelAssessment()">إعادة الاختبار من A1</button>
+  <button type="button" onclick="document.getElementById('levelAssessment').style.display='none';document.getElementById('examStart').style.display='block';" style="background:#555">العودة إلى الامتحانات</button>
+  <div style="text-align:right;margin-top:22px"><h3>ملخص أدائك حسب المستوى</h3>${assessmentLevels.map(l=>{
+   const rows=assessmentHistory.filter(x=>x.level===l);
+   if(!rows.length)return '';
+   const good=rows.filter(x=>x.correct).length;
+   return `<p style="margin:8px 0">${l}: ${good} إجابة صحيحة من ${rows.length}</p>`;
+  }).join("")}</div>
+ </div>`;
+ panel.scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+function cancelLevelAssessment(){
+ if(!confirm("هل تريد إنهاء اختبار تحديد المستوى والعودة إلى الامتحانات؟"))return;
+ document.getElementById("levelAssessment").style.display="none";
+ document.getElementById("examStart").style.display="block";
+}
+
+// ===================================
+// نمط امتحان جديد: تحدي القواعد المختلط
+// ===================================
+let mixedGrammarQuestions=[];
+function startMixedGrammarExam(){
+ const pool=[];
+ grammarData.filter(g=>g.id!=="verbPatterns" && Array.isArray(g.quiz)).forEach(g=>{
+  g.quiz.forEach(q=>{
+   if(!Array.isArray(q) || !Array.isArray(q[1]) || typeof q[2]!=="number") return;
+   const correctText=q[1][q[2]];
+   const shuffled=shuffleArray(q[1]);
+   pool.push({rule:g.name,question:q[0],options:shuffled,answer:shuffled.indexOf(correctText)});
+  });
+ });
+ if(pool.length<5){alert("لا توجد أسئلة كافية لإنشاء الامتحان المختلط.");return;}
+ mixedGrammarQuestions=shuffleArray(pool).slice(0,20);
+ const box=document.getElementById("grammarLesson");
+ box.innerHTML=`<div class="card">
+  <h2>🎯 امتحان القواعد المختلط</h2>
+  <p>20 سؤالاً من قواعد مختلفة. اختَر إجابة واحدة لكل سؤال، ثم اضغط صحّح الامتحان.</p>
+  <div id="mixedGrammarQuiz"></div>
+  <button type="button" onclick="gradeMixedGrammarExam()">صحّح الامتحان</button>
+  <div id="mixedGrammarScore" style="margin-top:18px;font-size:19px"></div>
+  <button type="button" onclick="startMixedGrammarExam()">امتحان جديد بأسئلة مختلفة</button>
+  <button type="button" onclick="renderGrammarTopics();document.getElementById('grammarLesson').innerHTML='';">العودة إلى القواعد</button>
+ </div>`;
+ const quiz=document.getElementById("mixedGrammarQuiz");
+ mixedGrammarQuestions.forEach((q,i)=>{
+  const d=document.createElement("div");d.className="grammar-question";
+  d.innerHTML=`<strong>${i+1}. ${q.question}</strong><p style="color:#64c9ff;margin:6px 0">القاعدة: ${q.rule}</p>`+
+   q.options.map((o,j)=>`<label style="display:block;margin:9px 0"><input type="radio" name="mgq${i}" value="${j}" style="width:auto;margin:0 7px"> <span dir="ltr">${o}</span></label>`).join("");
+  quiz.appendChild(d);
+ });
+ box.scrollIntoView({behavior:"smooth"});
+}
+function gradeMixedGrammarExam(){
+ let score=0,missing=0;const review=[];
+ mixedGrammarQuestions.forEach((q,i)=>{
+  const selected=document.querySelector(`input[name="mgq${i}"]:checked`);
+  if(!selected){missing++;return;}
+  const chosen=Number(selected.value),correct=chosen===q.answer;
+  if(correct)score++;
+  review.push({q,chosen,correct});
+ });
+ const result=document.getElementById("mixedGrammarScore");
+ if(missing){result.textContent=`باقي ${missing} سؤال/أسئلة بدون إجابة. جاوبها كلها ثم صحّح الامتحان.`;return;}
+ result.innerHTML=`نتيجتك: <strong style="color:#64c9ff">${score}/20 (${Math.round(score/20*100)}%)</strong><br>${score===20?"ممتاز! كل إجاباتك صحيحة.":score>=16?"أحسنت! مستوى رائع.":score>=12?"جيد، راجع الأسئلة التي أخطأت فيها.":"راجع القواعد وحاول مرة ثانية."}`+
+  `<div class="card" style="margin-top:15px;text-align:right"><h3>📋 مراجعة الإجابات</h3>${review.map((x,i)=>`<div class="grammar-question"><strong>${i+1}. ${x.q.question}</strong><p>القاعدة: ${x.q.rule}</p><p>إجابتك: <span style="color:${x.correct?'#75e6a5':'#ff9aa8'}">${x.q.options[x.chosen]}</span></p><p>الإجابة الصحيحة: <strong style="color:#75e6a5">${x.q.options[x.q.answer]}</strong></p><p>${x.correct?'✅ صحيح':'❌ غير صحيح'}</p></div>`).join("")}</div>`;
+ result.scrollIntoView({behavior:"smooth"});
+  if(score===20)celebratePerfectScore("20 من 20 في تحدي القواعد!");
+}
+
 function openGrammar(id){
  if(id==="verbPatterns"){openVerbPatternsMenu();return;}
  const g=grammarData.find(x=>x.id===id);if(!g)return;
@@ -2229,9 +2383,14 @@ function gradeGrammar(id){
  if(missing){r.textContent=`باقي ${missing} أسئلة بدون إجابة. جاوبها كلها ثم صحّح الامتحان.`;return;}
  r.innerHTML=`نتيجتك: <strong style="color:#64caff">${score}/${g.quiz.length} (${Math.round(score/g.quiz.length*100)}%)</strong><br>${score>=13?"ممتاز!":score>=10?"جيد جداً!":score>=8?"نتيجة جيدة، راجع الأخطاء.":"راجع القاعدة ثم حاول مرة أخرى."}`+
  `<div class="card" style="margin-top:15px;text-align:right"><h3>📋 مراجعة جميع الأسئلة والإجابات</h3>${review.map(m=>`<div class="grammar-question"><strong>${m.number}. ${m.question}</strong><p style="margin-top:8px">إجابتك: <span style="color:${m.correct?'#75e6a5':'#ff9aa8'}">${m.userAnswer}</span></p><p>الإجابة الصحيحة: <strong style="color:#75e6a5">${m.correctAnswer}</strong></p><p>${m.correct?'✅ صحيح':'❌ غير صحيح'}</p></div>`).join("")}</div>`;
+  if(score===g.quiz.length)celebratePerfectScore("علامة كاملة في القواعد!");
 }
 
 // ===================================
+let celebrationAudioContext=null,celebrationTimer=null;
+function playPerfectScoreSound(){try{const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;const ctx=celebrationAudioContext||(celebrationAudioContext=new AC());if(ctx.state==="suspended")ctx.resume();const now=ctx.currentTime;[523.25,659.25,783.99,1046.5,783.99,1046.5].forEach((f,i)=>{const o=ctx.createOscillator(),g=ctx.createGain(),t=now+i*.13;o.type="sine";o.frequency.value=f;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.14,t+.025);g.gain.exponentialRampToValueAtTime(.0001,t+.22);o.connect(g);g.connect(ctx.destination);o.start(t);o.stop(t+.24)});[1046.5,1318.5,1568].forEach(f=>{const o=ctx.createOscillator(),g=ctx.createGain();o.type="triangle";o.frequency.value=f;g.gain.setValueAtTime(.0001,now+.78);g.gain.exponentialRampToValueAtTime(.05,now+.82);g.gain.exponentialRampToValueAtTime(.0001,now+1.25);o.connect(g);g.connect(ctx.destination);o.start(now+.78);o.stop(now+1.28)})}catch(e){}}
+function celebratePerfectScore(label="علامة كاملة!"){const old=document.getElementById("celebrationLayer");if(old)old.remove();const oldBanner=document.querySelector(".celebration-banner");if(oldBanner)oldBanner.remove();if(celebrationTimer)clearTimeout(celebrationTimer);const layer=document.createElement("div");layer.id="celebrationLayer";const banner=document.createElement("div");banner.className="celebration-banner";banner.textContent="🏆 "+label+" 🎉";document.body.append(banner,layer);const palette=["#facc15","#fb7185","#38bdf8","#a78bfa","#34d399","#f97316","#f9a8d4","#fff"];const reduced=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;for(let i=0;i<(reduced?24:170);i++){const p=document.createElement("i");p.className="confetti-piece";p.style.left=Math.random()*100+"vw";p.style.background=palette[i%palette.length];p.style.width=6+Math.random()*8+"px";p.style.height=9+Math.random()*13+"px";p.style.borderRadius=Math.random()>.5?"50%":"2px";p.style.setProperty("--fall-time",2.5+Math.random()*2.4+"s");p.style.setProperty("--drift",(Math.random()-.5)*260+"px");p.style.setProperty("--spin-end",540+Math.random()*1200+"deg");p.style.animationDelay=Math.random()*.65+"s";layer.appendChild(p)}for(let i=0;i<22;i++){const sp=document.createElement("i");sp.className="celebration-spark";sp.style.left=5+Math.random()*90+"vw";sp.style.top=12+Math.random()*75+"vh";sp.style.animationDelay=Math.random()*.7+"s";layer.appendChild(sp)}playPerfectScoreSound();celebrationTimer=setTimeout(()=>{layer.remove();banner.remove()},5600)}
+
 // تشغيل الموقع
 // ===================================
 
